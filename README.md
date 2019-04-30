@@ -5,7 +5,9 @@ a package implementing the Density Functional-based Tight Binding method.
 
 ## Usage
 
-`dftbplus-sys` is **not yet published on crates.io**. Use a git dependency:
+`dftbplus-sys` is not yet published on crates.io.
+
+You must use a git dependency:
 
 <!-- Please remember to update ALL TOML examples, not just this one! -->
 ```toml
@@ -13,14 +15,16 @@ a package implementing the Density Functional-based Tight Binding method.
 dftbplus-sys = { git = "https://github.com/ExpHP/dftbplus-sys", tag = "v0.0.1" }
 ```
 
-`dftbplus-sys` currently always links to a system installation of `libdftb+`.
-**Because `DFTB+` includes no installation mechanism, you will need to "install" it yourself.**
+### Some assembly required!
 
-Please see [Installing DFTB+ for `dftbplus-sys`](doc/installing-dftbplus.md).
+`dftbplus-sys` currently always links to a system installation of `libdftb+`.
+**You will need to set this up yourself!**
+
+Please see [Installing DFTB+ for `dftbplus-sys`](doc/installing-dftbplus.md) for more information.
 
 ## Docs
 
-See [`dftbplus.h`] in the DFTB+ source tree.
+See [`api/mm/dftbplus.h`] in the DFTB+ source tree.
 This is the file that bindings will be generated to.
 
 If you just want to see the rust signatures for the bindings, you can also generate those yourself:
@@ -33,7 +37,7 @@ cargo doc --open
 
 ## Configuration
 
-There are currently no environment vars or cargo features for configuring `dftbplus-sys`.
+There are currently **no environment vars** or **cargo features** for configuring `dftbplus-sys`.
 
 ## Does it work?
 
@@ -43,7 +47,6 @@ For an easier time diagnosing building/linking issues, you can clone this repo a
 $ git clone https://github.com/ExpHP/dftbplus-sys
 $ cd dftbplus-sys
 $ cargo run --example=link-test || echo "failure!"
-$
 $ ls -l link-test.out
 .rw-r--r-- 0 lampam 30 Apr 10:34 link-test.out
 ```
@@ -67,7 +70,9 @@ See [Release notes](relnotes.md).
 
 ## Citations
 
-B. Aradi, B. Hourahine, and Th. Frauenheim. DFTB+, a sparse matrix-based
+**For DFTB+:**
+
+* B. Aradi, B. Hourahine, and Th. Frauenheim. DFTB+, a sparse matrix-based
 implementation of the DFTB method, J. Phys. Chem. A, 111 5678 (2007).
 
-[`dftbplus.h`]: https://github.com/dftbplus/dftbplus/blob/master/api/mm/dftbplus.h
+[`api/mm/dftbplus.h`]: https://github.com/dftbplus/dftbplus/blob/master/api/mm/dftbplus.h
