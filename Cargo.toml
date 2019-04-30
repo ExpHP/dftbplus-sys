@@ -1,0 +1,27 @@
+[package]
+name = "dftbplus-sys"
+# Remember to update README.md, and html_root_url!
+version = "0.0.1"
+description = "Generates bindings to DFTB+'s C interface"
+
+authors = ["Michael Lamparski <diagonaldevice@gmail.com>"]
+repository = "https://github.com/ExpHP/dftbplus-sys"
+keywords = ["ffi", "materials", "physics"]
+categories = ["science"]
+license = "MIT OR Apache 2.0"
+readme = "README.md"
+
+edition = "2018"
+links = "dftb+"
+build = "build/main.rs"
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.31.3" # currently held back to be compatible with lammps-sys
+path_abs = { version = "0.3.16", default-features = false }
+walkdir = "2.1.4"
+pkg-config = "0.3.14"
+
+[features]
+default = []
