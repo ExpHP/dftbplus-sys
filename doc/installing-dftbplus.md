@@ -12,10 +12,10 @@ In other words, it expects the following command:
 pkg-config --cflags --libs --static libdftb+
 ```
 
-to print all of `-I`, `-L`, `-l`, and `-D` flags necessary to build against the library.
+to print all of `-I`, `-L`, `-l`, and `-D` flags necessary to build against the library and preprocess its header file.
 
 Notice from the above that `dftbplus-sys` assumes the library was built statically.
-This is because, at the time of writing, DFTB+ itself does not support being built as a shared library.
+This is because, at the time of writing, DFTB+ itself does not appear to support being built as a shared library.
 
 > **Q:** So that's just `make install_api`, right?
 
@@ -37,7 +37,7 @@ In these examples I will be using `$HOME/.local` as the install prefix.
 If you're following along, make sure that `$HOME/lib/pkgconfig` is in your **`PKG_CONFIG_PATH`**
 and that the variable is exported to the environment.
 
-e.g. **`.bashrc**:
+e.g. **`.bashrc`**:
 
 ```bash
 export PKG_CONFIG_PATH=/home/lampam/.local/lib/pkgconfig:$PKG_CONFIG_PATH
@@ -67,7 +67,7 @@ On my system, I simply did the following:
 $ cp sys/make.x86_64-linux-gnu make.arch
 ```
 
-**MPI and OpenMP are currently unsupported by `dftbplus-sys`**. Try them if you like, but you can almost certainly expect to run into trouble. [Let me know it works out for you](https://github.com/ExpHP/dftbplus-sys/issues/new)!
+**MPI and OpenMP are currently unsupported by `dftbplus-sys`**. Try them if you like, but you can almost certainly expect to run into trouble. [Let me know how it works out for you](https://github.com/ExpHP/dftbplus-sys/issues/new)!
 
 ### Build and test the API
 
