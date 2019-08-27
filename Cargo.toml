@@ -8,8 +8,11 @@ authors = ["Michael Lamparski <diagonaldevice@gmail.com>"]
 repository = "https://github.com/ExpHP/dftbplus-sys"
 keywords = ["ffi", "materials", "physics"]
 categories = ["science"]
-license = "MIT OR Apache 2.0"
 readme = "README.md"
+
+# This reflects the license of DFTB+ for the benefit of e.g. 'cargo lichking'.
+# The rust crate itself is licensed under MIT or Apache 2.0, at your option.
+license = "LGPL-3.0-only"
 
 edition = "2018"
 links = "dftb+"
