@@ -35,8 +35,11 @@ impl fmt::Display for ProbeError {
 fn probe_and_link_via_pkgconfig() -> Result<BuildMeta, ProbeError> {
     let library = {
         ::pkg_config::Config::new()
-            .statik(true)
-            .probe("libdftb+")?
+            .statik(match crate::env::link_type() {
+                crate::LinkType::Shared => false,
+                crate::LinkType::Static => true,
+            })
+            .probe("dftbplus")?
     };
     let include_dirs = CcFlags({
         library.include_paths.into_iter()

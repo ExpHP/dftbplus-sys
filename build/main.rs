@@ -95,7 +95,6 @@ fn rerun_if_changed_recursive(root: &Path) -> PanicResult<()> {
 }
 
 fn rerun_if_changed<T: Display>(path: T) { println!("cargo:rerun-if-changed={}", path); }
-#[allow(unused)]
 fn rerun_if_env_changed<T: Display>(var: T) { println!("cargo:rerun-if-env-changed={}", var); }
 
 // ----------------------------------------------------
@@ -113,7 +112,9 @@ impl<T: Display> From<T> for Never {
 
 // ----------------------------------------------------
 
+pub enum LinkType { Static, Shared }
 mod env {
+    use super::*;
     use ::std::env;
 
     // For vars that cargo provides, like OUT_DIR.
@@ -122,7 +123,23 @@ mod env {
         env::var(var).unwrap_or_else(|e| panic!("error reading {}: {}", var, e))
     }
 
-    // (there's currently no env vars designed specifically for this crate)
+    pub fn link_type() -> LinkType {
+        let var = "RUST_DFTBPLUS_LINK_TYPE";
+        let value = get_rerun(var).unwrap_or_else(|| String::from("static"));
+        match &value[..] {
+            "shared" => LinkType::Shared,
+            "static" => LinkType::Static,
+            s => panic!("Bad value for {}: {:?}", var, s),
+        }
+    }
+
+    fn get_rerun(s: &str) -> Option<String> {
+        rerun_if_env_changed(s);
+        env::var(s).map(Some).unwrap_or_else(|e| match e {
+            env::VarError::NotPresent => None,
+            env::VarError::NotUnicode(e) => panic!("var {} is not unicode: {:?}", s, e),
+        })
+    }
 }
 
 // ----------------------------------------------------

@@ -15,10 +15,10 @@ You must use a git dependency:
 dftbplus-sys = { git = "https://github.com/ExpHP/dftbplus-sys", tag = "v0.0.1" }
 ```
 
-### Some assembly required!
+### Some assembly may be required!
 
 `dftbplus-sys` currently always links to a system installation of `libdftb+`.
-**You will need to set this up yourself!**
+**You need to build DFTB+ with some specific flags to make this work!**
 
 Please see [Installing DFTB+ for `dftbplus-sys`](doc/installing-dftbplus.md) for more information.
 

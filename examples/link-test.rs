@@ -20,11 +20,11 @@ use dftbplus_sys as c;
 const OUT_PATH: &[u8] = b"link-test.out\0";
 fn main() {
     unsafe {
-        let mut dft: c::DftbPlus = ::std::mem::uninitialized();
+        let mut dft = ::std::mem::MaybeUninit::<c::DftbPlus>::uninit();
 
         // NOTE: The output filepath can be a null pointer to suppress output,
         //       but here we want an observable side-effect.
-        c::dftbp_init(&mut dft, OUT_PATH.as_ptr() as *const c_char);
-        c::dftbp_final(&mut dft);
+        c::dftbp_init(dft.as_mut_ptr(), OUT_PATH.as_ptr() as *const c_char);
+        c::dftbp_final(dft.as_mut_ptr());
     }
 }
