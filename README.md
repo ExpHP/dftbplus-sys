@@ -12,7 +12,7 @@ You must use a git dependency:
 <!-- Please remember to update ALL TOML examples, not just this one! -->
 ```toml
 [dependencies]
-dftbplus-sys = { git = "https://github.com/ExpHP/dftbplus-sys", tag = "v0.0.1" }
+dftbplus-sys = { git = "https://github.com/ExpHP/dftbplus-sys", tag = "v0.0.2" }
 ```
 
 ### Some assembly may be required!

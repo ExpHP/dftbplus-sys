@@ -1,7 +1,7 @@
 [package]
 name = "dftbplus-sys"
 # Remember to update README.md, and html_root_url!
-version = "0.0.1"
+version = "0.0.2"
 description = "Generates bindings to DFTB+'s C interface"
 
 authors = ["Michael Lamparski <diagonaldevice@gmail.com>"]
